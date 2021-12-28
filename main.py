@@ -7,7 +7,7 @@ AUTH_TOKEN = os.getenv('AUTH_TOKEN')
 
 req = Requests(AUTH_TOKEN)
 
-# req.get_account_info()
-friends = req.get_friends()
+print(req.get_account_info())
+# friends = req.get_friends()
 
-print(friends)
+# print(friends)
