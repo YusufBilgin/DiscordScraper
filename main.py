@@ -4,6 +4,8 @@ from pick import pick
 from dotenv import load_dotenv
 from colorama import Fore, Back, Style
 from modules.get_requests import Requests
+from tabulate import tabulate
+
 
 load_dotenv()
 AUTH_TOKEN = os.getenv('AUTH_TOKEN')
@@ -53,7 +55,6 @@ print("""
         )
     )
 
-
 try:
     while True:  
         user_input = int(
@@ -63,10 +64,33 @@ try:
         if user_input == 1:
             selected_action = choose_action()
 
-            print(selected_action)
+            if selected_action == 0:
+                user_account_data = req.get_account_info()
+                table = [
+                    ['ID', user_account_data['id']],
+                    ['Username', user_account_data['username']],
+                    ['Discriminator', user_account_data['discriminator']],
+                    ['Location', user_account_data['locale']],
+                    ['Email', user_account_data['email']],
+                    ['Phone', user_account_data['phone']]
+                ]
+                print(
+                    tabulate(table, headers = ['Name', 'Value'])
+                )
+            elif selected_action == 1:
+                pass
+            elif selected_action == 2:
+                pass
+            elif selected_action == 3:
+                pass
+            
+
+
+
+
             print("Press any key to continue")
             wait()
         elif user_input == 2:
             print("info text")
 except Exception:
-    pass
+    print("the program has been stopped")
