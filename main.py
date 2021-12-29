@@ -78,7 +78,16 @@ try:
                     tabulate(table, headers = ['Name', 'Value'])
                 )
             elif selected_action == 1:
-                pass
+                user_friends = req.get_friends()
+                for i in user_friends:
+                    table = [
+                        ['ID', i['user']['id']],
+                        ['Username', i['user']['username']],
+                        ['Discriminator', i['user']['discriminator']],
+                    ]
+                    print(
+                        tabulate(table)
+                    )
             elif selected_action == 2:
                 pass
             elif selected_action == 3:
