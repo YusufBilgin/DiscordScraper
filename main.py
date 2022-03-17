@@ -101,5 +101,7 @@ try:
             wait()
         elif user_input == 2:
             print("info text")
+except KeyboardInterrupt:
+    print("\nExit the program")
 except Exception:
     print("the program has been stopped")
