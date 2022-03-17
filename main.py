@@ -38,7 +38,7 @@ def calc_space(string_length, before_length, max_length):
 print("""
     #########################################
     #                                       #
-    #   Welcome to Discord Scraper          #
+    #      Welcome to Discord Scraper       #
     #                                       #
     # {}{}
     #  {}  {}                  #
