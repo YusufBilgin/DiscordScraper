@@ -93,5 +93,6 @@ try:
             print("info text")
 except KeyboardInterrupt:
     print("\nExit the program")
-except Exception:
+except Exception as error:
+    print(error)
     print("the program has been stopped")
