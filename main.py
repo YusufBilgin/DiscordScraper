@@ -27,6 +27,17 @@ def choose_action():
     option, index = pick(options, title)
 
     return index
+
+def save_or_not():
+    title = "Should i save the result?"
+    options = [
+        'yes',
+        'no'
+    ]
+    option, index = pick(options, title)
+
+    return index
+
     
 def calc_space(string_length, before_length, max_length):
     a = int(max_length) - (int(before_length) + int(string_length))
@@ -65,6 +76,7 @@ try:
             selected_action = choose_action()
 
             if selected_action == 0:
+                save_or_not()
                 user_account_data = req.get_account_info()
                 table = [
                     ['ID', user_account_data['id']],
