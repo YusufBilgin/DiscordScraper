@@ -1,8 +1,10 @@
+import imp
 import os
 import msvcrt as m
 from pick import pick
 from dotenv import load_dotenv
 from modules.cli_forms import *
+from modules.file_operations import *
 from colorama import Fore, Back, Style
 from modules.get_requests import Requests
 from tabulate import tabulate
@@ -54,7 +56,11 @@ try:
             selected_action = choose_action()
 
             if selected_action == 0:
-                save_or_not()
+                if save_or_not() == 0:
+                    save = True
+                else:
+                    save = False
+                    
                 user_account_data = req.get_account_info()
                 table = [
                     ['ID', user_account_data['id']],
@@ -64,9 +70,12 @@ try:
                     ['Email', user_account_data['email']],
                     ['Phone', user_account_data['phone']]
                 ]
-                print(
-                    tabulate(table, headers = ['Name', 'Value'])
-                )
+                data = tabulate(table, headers = ['Name', 'Value'])
+                print(data)
+                
+                if save == True:
+                    save_content_to_txt(data)
+                
             elif selected_action == 1:
                 user_friends = req.get_friends()
                 for i in user_friends:
