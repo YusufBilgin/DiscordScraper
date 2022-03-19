@@ -70,13 +70,6 @@ def main():
             print("info text")
 
 
-
-try:
-    pass
-    
-except Exception:
-    pass
-
 if __name__ == "__main__":
     try:
         main()
