@@ -1,12 +1,15 @@
 import os
 import msvcrt as m
 from pick import pick
+from tabulate import tabulate
 from dotenv import load_dotenv
+
+from modules.menu import *
+from modules.utils import *
 from modules.cli_forms import *
 from modules.file_operations import *
-from colorama import Fore, Back, Style
 from modules.get_requests import Requests
-from tabulate import tabulate
+
 
 
 load_dotenv()
@@ -14,36 +17,8 @@ AUTH_TOKEN = os.getenv('AUTH_TOKEN')
 
 req = Requests(AUTH_TOKEN)
 
+menu()
 
-def wait():
-    m.getch()
-    
-def calc_space(string_length, before_length, max_length):
-    a = int(max_length) - (int(before_length) + int(string_length))
-    space = a * " "
-
-    return str(space)
-
-
-print("""
-    #########################################
-    #                                       #
-    #      Welcome to Discord Scraper       #
-    #                                       #
-    # {}{}
-    #  {}  {}                  #
-    #  {}  {}                            #
-    #                                       #
-    #########################################
-    """.format(
-            Fore.CYAN + 'Options:' + Style.RESET_ALL,
-            calc_space(len('Options:'), 1, 39) + '#',
-            Fore.CYAN + '[1]' + Style.RESET_ALL,
-            'Choose actions',
-            Fore.CYAN + '[2]' + Style.RESET_ALL,
-            'Info'
-        )
-    )
 
 try:
     while True:  
