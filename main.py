@@ -70,9 +70,9 @@ def main():
                         i['recipients'][0]['avatar']
                     )
                     dm_channels.append({
-                            'channel_id': i['id'],
-                            'username': Fore.CYAN + i['recipients'][0]['username'] + Fore.RESET,
-                            'discord id': f"{i['recipients'][0]['username']}#{i['recipients'][0]['discriminator']}",
+                            'Channel id': i['id'],
+                            'Username': Fore.CYAN + i['recipients'][0]['username'] + Fore.RESET,
+                            'Discord id': f"{i['recipients'][0]['username']}#{i['recipients'][0]['discriminator']}",
                             'User avatar': f'\u001b]8;;{avatar_link}\u001b\\View Avatar\u001b]8;;\u001b\\'
                         })
                 
