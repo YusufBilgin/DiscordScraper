@@ -1,6 +1,4 @@
 import os
-import msvcrt as m
-from pick import pick
 from tabulate import tabulate
 from dotenv import load_dotenv
 
