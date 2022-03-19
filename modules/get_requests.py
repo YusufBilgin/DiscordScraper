@@ -30,6 +30,11 @@ class Requests():
             f'https://discord.com/api/v9/users/@me/channels'
         )
 
+    def get_guilds(self):
+        return self.request_func(
+            f'https://discord.com/api/v9/users/@me/guilds'
+        )
+
     def get_channel_messages(self, channel_id, before = False, **kwargs):
         last_message_id = kwargs.get('id', None)
 
