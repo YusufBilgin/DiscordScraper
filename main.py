@@ -11,16 +11,14 @@ from modules.file_operations import *
 from modules.get_requests import Requests
 
 
-
 load_dotenv()
 AUTH_TOKEN = os.getenv('AUTH_TOKEN')
 
 req = Requests(AUTH_TOKEN)
 
-menu()
 
-
-try:
+def main():
+    menu()
     while True:  
         user_input = int(
                 input("Please choose one of the actions given above: ")
@@ -66,16 +64,24 @@ try:
             elif selected_action == 3:
                 pass
             
-
-
-
-
             print("Press any key to continue")
             wait()
         elif user_input == 2:
             print("info text")
-except KeyboardInterrupt:
-    print("\nExit the program")
-except Exception as error:
-    print(error)
-    print("the program has been stopped")
+
+
+
+try:
+    pass
+    
+except Exception:
+    pass
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nExit the program")
+    except Exception as error:
+        print(error)
+        print("the program has been stopped")
