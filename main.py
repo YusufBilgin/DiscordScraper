@@ -3,10 +3,10 @@ from tabulate import tabulate
 from dotenv import load_dotenv
 from colorama import Fore, init
 
-from modules.menu import *
-from modules.utils import *
-from modules.cli_forms import *
-from modules.file_operations import *
+from modules.menu import menu
+from modules.utils import wait
+from modules.cli_forms import choose_action, save_or_not
+from modules.file_operations import save_content_to_txt
 from modules.get_requests import Requests
 
 init()
