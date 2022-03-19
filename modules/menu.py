@@ -1,4 +1,7 @@
-from colorama import Fore, Back, Style
+from colorama import Fore, init
+
+init()
+
 
 def calc_space(string_length, before_length, max_length):
     a = int(max_length) - (int(before_length) + int(string_length))
@@ -18,11 +21,11 @@ def menu():
     #                                       #
     #########################################
     """.format(
-            Fore.CYAN + 'Options:' + Style.RESET_ALL,
+            Fore.CYAN + 'Options:' + Fore.RESET,
             calc_space(len('Options:'), 1, 39) + '#',
-            Fore.CYAN + '[1]' + Style.RESET_ALL,
+            Fore.CYAN + '[1]' + Fore.RESET,
             'Choose actions',
-            Fore.CYAN + '[2]' + Style.RESET_ALL,
+            Fore.CYAN + '[2]' + Fore.RESET,
             'Info'
         )
     )
