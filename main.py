@@ -92,7 +92,7 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\nExit the program")
+        print(Fore.GREEN + "\nExit the program")
     except Exception as error:
-        print(error)
-        print("the program has been stopped")
+        print(Fore.RED + error)
+        print("the program has been stopped" + Fore.RESET)
