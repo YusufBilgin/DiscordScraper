@@ -1,6 +1,7 @@
 import os
 from tabulate import tabulate
 from dotenv import load_dotenv
+from colorama import Fore, init
 
 from modules.menu import *
 from modules.utils import *
@@ -8,7 +9,7 @@ from modules.cli_forms import *
 from modules.file_operations import *
 from modules.get_requests import Requests
 
-
+init()
 load_dotenv()
 AUTH_TOKEN = os.getenv('AUTH_TOKEN')
 
@@ -70,7 +71,7 @@ def main():
                     )
                     dm_channels.append({
                             'channel_id': i['id'],
-                            'username': i['recipients'][0]['username'],
+                            'username': Fore.CYAN + i['recipients'][0]['username'] + Fore.RESET,
                             'discord id': f"{i['recipients'][0]['username']}#{i['recipients'][0]['discriminator']}",
                             'User avatar': f'\u001b]8;;{avatar_link}\u001b\\View Avatar\u001b]8;;\u001b\\'
                         })
