@@ -15,22 +15,22 @@ class Requests():
         )
         return json.loads(r.text)
 
-    def get_account_info(self):
+    def get_account_info(self) -> dict:
         return self.request_func(
             f'https://discord.com/api/v9/users/@me'
         )
 
-    def get_friends(self):
+    def get_friends(self) -> list:
         return self.request_func(
             f'https://discord.com/api/v9/users/@me/relationships'
         )
 
-    def get_dm_channels(self):
+    def get_dm_channels(self) -> list:
         return self.request_func(
             f'https://discord.com/api/v9/users/@me/channels'
         )
 
-    def get_guilds(self):
+    def get_guilds(self) -> list:
         return self.request_func(
             f'https://discord.com/api/v9/users/@me/guilds'
         )

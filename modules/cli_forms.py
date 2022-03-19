@@ -7,6 +7,7 @@ def choose_action():
         'Print my account infos',
         'Print my friends list',
         'Print my dm channels',
+        'Print my servers',
         'Print messages from a spesific channel'
     ]
     option, index = pick(options, title)

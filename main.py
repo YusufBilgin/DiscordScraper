@@ -76,9 +76,21 @@ def main():
                             'User avatar': f'\u001b]8;;{avatar_link}\u001b\\View Avatar\u001b]8;;\u001b\\'
                         })
                 
-                print(tabulate(dm_channels, headers = 'keys', tablefmt="grid"))
+                print(tabulate(dm_channels, headers = 'keys', tablefmt = "grid"))
 
             elif selected_action == 3:
+                guilds_raw = req.get_guilds()
+                guilds = list()
+
+                for i in guilds_raw:
+                    guilds.append({
+                        'Guild id': i['id'],
+                        'Name': Fore.MAGENTA + i['name'] + Fore.RESET,
+                    })
+
+                print(tabulate(guilds, headers = 'keys', tablefmt = "github"))
+
+            elif selected_action == 4:
                 pass
             
             print("Press any key to continue")
