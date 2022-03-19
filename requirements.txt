@@ -1,0 +1,6 @@
+colorama==0.4.4
+pick==1.2.0
+python-dotenv==0.19.2
+requests==2.27.1
+tabulate==0.8.9
+windows-curses==2.3.0
