@@ -91,7 +91,37 @@ def main():
                 print(tabulate(guilds, headers = 'keys', tablefmt = "github"))
 
             elif selected_action == 4:
-                pass
+                channel_id = input("channel id: ")
+                channel_messages_row = req.get_channel_messages(channel_id) 
+                messages_list = list()
+
+                def add_messages_to_list(message_list, row_data) -> list:
+                    for i in row_data:
+                        message_list.append({
+                            'Message id': i['id'],
+                            'Message author': i['author']['username'],
+                            'content': i['content'],
+                            'time': i['timestamp']
+                        })
+
+                    return message_list
+
+                messages_list = add_messages_to_list(messages_list, channel_messages_row)
+
+                n = 25  # The for loop should run until there is no message. idk how to do this
+                for i in range(0, n):
+                    try:
+                        last_id = messages_list[-1]['Message id']
+                        add_messages_to_list(messages_list, req.get_channel_messages(channel_id, id = last_id, before = True))
+                    except:
+                        print(Fore.RED + "There is no more data to request" + Fore.RESET)
+                        break
+                
+
+                for i in reversed(messages_list):
+                    print(f"{i['Message author']}: {i['content']}\n")
+
+
             
             print("Press any key to continue")
             wait()
