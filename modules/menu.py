@@ -9,7 +9,7 @@ def calc_space(string_length, before_length, max_length):
 
     return str(space)
 
-def menu():
+def menu() -> None:
     print("""
     #########################################
     #                                       #
@@ -29,3 +29,5 @@ def menu():
             'Info'
         )
     )
+
+    return None

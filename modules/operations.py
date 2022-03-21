@@ -3,7 +3,7 @@ from colorama import Fore, init
 from .cli_forms import save_or_not
 from .file_operations import save_content_to_txt
 
-def print_user_account_data(request_object) -> None:
+def print_user_account_data(request_object: object) -> None:
     if save_or_not() == 0:
         save = True
     else:
@@ -26,7 +26,7 @@ def print_user_account_data(request_object) -> None:
 
     return None
 
-def print_user_friends(request_object) -> None:
+def print_user_friends(request_object: object) -> None:
     user_friends = request_object.get_friends()
                 
     for i in user_friends:
@@ -41,7 +41,7 @@ def print_user_friends(request_object) -> None:
 
     return None
 
-def print_user_dm_channels(request_object) -> None:
+def print_user_dm_channels(request_object: object) -> None:
     dm_channels_row = request_object.get_dm_channels()
     dm_channels = list()
 
@@ -61,7 +61,7 @@ def print_user_dm_channels(request_object) -> None:
 
     return None
 
-def print_user_guilds(request_object) -> None:
+def print_user_guilds(request_object: object) -> None:
     guilds_raw = request_object.get_guilds()
     guilds = list()
 
@@ -75,7 +75,7 @@ def print_user_guilds(request_object) -> None:
 
     return None
 
-def print_specific_channel_messages(channel_id, request_object) -> None:
+def print_specific_channel_messages(channel_id: str, request_object: object) -> None:
     channel_messages_row = request_object.get_channel_messages(channel_id) 
     messages_list = list()
 

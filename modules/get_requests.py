@@ -3,12 +3,12 @@ import requests
 
 
 class Requests():
-    def __init__(self, auth_token) -> None:
+    def __init__(self, auth_token: str) -> None:
         self.headers = {
             'authorization': auth_token
         }
 
-    def request_func(self, url):
+    def request_func(self, url: str):
         r = requests.get(
             url,
             headers = self.headers
@@ -35,7 +35,7 @@ class Requests():
             f'https://discord.com/api/v9/users/@me/guilds'
         )
 
-    def get_channel_messages(self, channel_id, before = False, **kwargs) -> list:
+    def get_channel_messages(self, channel_id: str, before: bool = False, **kwargs) -> list:
         last_message_id = kwargs.get('id', None)
 
         if before == False:
