@@ -1,4 +1,5 @@
 import os
+from pick import pick
 from dotenv import load_dotenv
 from colorama import Fore, init
 
@@ -40,6 +41,24 @@ def main():
                     case 4:
                         channel_id = input("channel id: ")
                         print_specific_channel_messages(channel_id, req)
+                    case 5:
+                        title = "select a channel"
+                        options = list()
+                        channels = list()
+                        
+                        for channel in req.get_dm_channels():
+                            if not channel['recipients'][0]['username'].isascii():
+                                continue
+                            options.append(
+                                f"{channel['recipients'][0]['username']}#{channel['recipients'][0]['discriminator']}"
+                            )
+                            channels.append(
+                                f"{channel['id']}"
+                            )
+
+                        option, index = pick(options, title)
+                        print_specific_channel_messages(channels[index], req)
+
                     case _:
                         pass
 
