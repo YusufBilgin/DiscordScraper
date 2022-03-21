@@ -6,7 +6,13 @@ from modules.menu import menu
 from modules.utils import wait
 from modules.cli_forms import choose_action
 from modules.get_requests import Requests
-from modules.operations import *
+from modules.operations import (
+    print_user_guilds,
+    print_user_friends,
+    print_user_dm_channels,
+    print_user_account_data,
+    print_specific_channel_messages
+)
 
 init()
 load_dotenv()
@@ -19,7 +25,6 @@ def main():
     menu()
     while True:  
         user_input = input("Please choose one of the actions given above: ")
-
         match user_input:
             case "1":
                 selected_action = choose_action()
@@ -52,5 +57,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print(Fore.GREEN + "\nExit the program")
     except Exception as error:
-        print(Fore.RED + error)
+        print(Fore.RED + str(error))
         print("the program has been stopped" + Fore.RESET)
