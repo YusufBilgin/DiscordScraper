@@ -92,16 +92,19 @@ def print_specific_channel_messages(channel_id: str, request_object: object) -> 
 
     messages_list = add_messages_to_list(messages_list, channel_messages_row)
 
-    n = 25  # The for loop should run until there is no message. idk how to do this
-    for i in range(0, n):
-        try:
-            last_id = messages_list[-1]['Message id']
-            add_messages_to_list(messages_list, request_object.get_channel_messages(channel_id, id = last_id, before = True))
-        except:
-            print(Fore.RED + "There is no more data to request" + Fore.RESET)
+    while True:
+        for i in range(1):
+            try:
+                last_id = messages_list[-1]['Message id']
+                row_data = request_object.get_channel_messages(channel_id, id = last_id, before = True)
+                add_messages_to_list(messages_list, row_data)
+            except:
+                print(Fore.RED + "There is no more data to request" + Fore.RESET)
+                break
+        if len(row_data) < 50:
+            print(Fore.GREEN + "There is no more data to request" + Fore.RESET)
             break
     
-
     for i in reversed(messages_list):
         print(f"{i['Message author']}: {i['content']}\n")
 
