@@ -1,7 +1,7 @@
 from pick import pick
 
 
-def choose_action():
+def choose_action() -> int:
     title = 'Please choose an action'
     options = [
         'Print my account infos',
@@ -14,7 +14,7 @@ def choose_action():
 
     return index
 
-def save_or_not():
+def save_or_not() -> int:
     title = "Should i save the result?"
     options = [
         'yes',
