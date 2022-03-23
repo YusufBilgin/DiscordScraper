@@ -1,13 +1,9 @@
 from tabulate import tabulate
 from colorama import Fore, init
-from .cli_forms import save_or_not
-from .file_operations import save_content_to_txt
+from .decorators import save_to_txt
 
+@save_to_txt
 def print_user_account_data(request_object: object) -> None:
-    if save_or_not() == 0:
-        save = True
-    else:
-        save = False
         
     user_account_data = request_object.get_account_info()
     table = [
@@ -20,11 +16,8 @@ def print_user_account_data(request_object: object) -> None:
     ]
     data = tabulate(table, headers = ['Name', 'Value'])
     print(data)
-    
-    if save == True:
-        save_content_to_txt(data)
 
-    return None
+    return data
 
 def print_user_friends(request_object: object) -> None:
     user_friends = request_object.get_friends()
