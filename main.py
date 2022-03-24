@@ -8,11 +8,11 @@ from modules.utils import wait
 from modules.cli_forms import choose_action
 from modules.get_requests import Requests
 from modules.operations import (
-    print_user_guilds,
-    print_user_friends,
-    print_user_dm_channels,
-    print_user_account_data,
-    print_specific_channel_messages
+    user_guilds,
+    user_friends,
+    user_dm_channels,
+    user_account_data,
+    specific_channel_messages
 )
 
 init()
@@ -31,16 +31,16 @@ def main():
                 selected_action = choose_action()
                 match selected_action:
                     case 0:
-                        print_user_account_data(req)
+                        user_account_data(req)
                     case 1:
-                        print_user_friends(req)
+                        user_friends(req)
                     case 2:
-                        print_user_dm_channels(req)
+                        user_dm_channels(req)
                     case 3:
-                        print_user_guilds(req)
+                        user_guilds(req)
                     case 4:
                         channel_id = input("channel id: ")
-                        print_specific_channel_messages(channel_id, req)
+                        specific_channel_messages(channel_id, req)
                     case 5:
                         title = "select a channel"
                         options = list()

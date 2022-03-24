@@ -3,7 +3,7 @@ from colorama import Fore, init
 from .decorators import save_to_txt
 
 @save_to_txt
-def print_user_account_data(request_object: object) -> None:
+def user_account_data(request_object: object) -> None:
         
     user_account_data = request_object.get_account_info()
     table = [
@@ -19,7 +19,7 @@ def print_user_account_data(request_object: object) -> None:
 
     return data
 
-def print_user_friends(request_object: object) -> None:
+def user_friends(request_object: object) -> None:
     user_friends = request_object.get_friends()
                 
     for i in user_friends:
@@ -34,7 +34,7 @@ def print_user_friends(request_object: object) -> None:
 
     return None
 
-def print_user_dm_channels(request_object: object) -> None:
+def user_dm_channels(request_object: object) -> None:
     dm_channels_row = request_object.get_dm_channels()
     dm_channels = list()
 
@@ -54,7 +54,7 @@ def print_user_dm_channels(request_object: object) -> None:
 
     return None
 
-def print_user_guilds(request_object: object) -> None:
+def user_guilds(request_object: object) -> None:
     guilds_raw = request_object.get_guilds()
     guilds = list()
 
@@ -68,7 +68,7 @@ def print_user_guilds(request_object: object) -> None:
 
     return None
 
-def print_specific_channel_messages(channel_id: str, request_object: object) -> None:
+def specific_channel_messages(channel_id: str, request_object: object) -> None:
     channel_messages_row = request_object.get_channel_messages(channel_id) 
     messages_list = list()
 
