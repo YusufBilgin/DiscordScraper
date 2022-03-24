@@ -57,7 +57,7 @@ def main():
                             )
 
                         option, index = pick(options, title)
-                        print_specific_channel_messages(channels[index], req)
+                        specific_channel_messages(channels[index], req)
 
                     case _:
                         pass
