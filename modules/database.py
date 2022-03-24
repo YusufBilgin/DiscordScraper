@@ -22,17 +22,26 @@ class Database:
 
         return None
 
-    def create_table(self, table_name: str) -> None:
+    def create_table(self, table_name: str, columns_dict: dict) -> None:
         """Create a table on db with the given name 
 
         Args:
             table_name (str): table name
+            columns_dict (dict): a dictionary that contains column data
+                                key: column name
+                                value: column type
 
         Returns:
             None: none
         """
 
-        query = F"CREATE TABLE IF NOT EXISTS {table_name} "
+        query = F"CREATE TABLE IF NOT EXISTS {table_name} ("
+
+        for i in columns_dict:
+            if list(columns_dict.keys())[-1] == i:
+                query += f"{i} {columns_dict[i]})"
+                continue
+            query += f"{i} {columns_dict[i]}, "
 
         try:    
             self.cursor.execute(query)
