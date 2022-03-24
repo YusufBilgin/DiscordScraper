@@ -34,8 +34,23 @@ class Requests():
         return self.request_func(
             f'https://discord.com/api/v9/users/@me/guilds'
         )
+    
+    def get_guild_info(self, guild_id: str | int) -> list:
+        return self.request_func(
+            f'https://discord.com/api/v9/guilds/{guild_id}'
+        )
+    
+    def get_guild_members(self, guild_id: str | int) -> dict:
+        return self.request_func(
+            f'https://discord.com/api/v9/guilds/{guild_id}/members'
+        )
 
-    def get_channel_messages(self, channel_id: str, before: bool = False, **kwargs) -> list:
+    def get_guild_channels(self, guild_id: str | int) -> list:
+        return self.request_func(
+            f'https://discord.com/api/v9/guilds/{guild_id}/channels'
+        )
+
+    def get_channel_messages(self, channel_id: str | int, before: bool = False, **kwargs) -> list:
         last_message_id = kwargs.get('id', None)
 
         if before == False:
