@@ -1,5 +1,6 @@
 /.env
 /test.py
+/database.db
 /modules/__pycache__
 venv/
 output/
