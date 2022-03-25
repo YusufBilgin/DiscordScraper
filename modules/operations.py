@@ -2,6 +2,7 @@ from tabulate import tabulate
 from colorama import Fore, init
 from .decorators import save_to_txt
 
+
 @save_to_txt
 def user_account_data(request_object: object) -> None:
         
@@ -19,6 +20,7 @@ def user_account_data(request_object: object) -> None:
 
     return data
 
+
 def user_friends(request_object: object) -> None:
     user_friends = request_object.get_friends()
                 
@@ -33,6 +35,7 @@ def user_friends(request_object: object) -> None:
         )
 
     return None
+
 
 def user_dm_channels(request_object: object) -> None:
     dm_channels_row = request_object.get_dm_channels()
@@ -53,6 +56,7 @@ def user_dm_channels(request_object: object) -> None:
     print(tabulate(dm_channels, headers = 'keys', tablefmt = "grid"))
 
     return None
+
 
 def user_guilds(request_object: object) -> None:
     guilds_raw = request_object.get_guilds()
@@ -84,7 +88,13 @@ def guild_channels(request_object: object, guild_id: str) -> dict:
         'sound': []
     }
 
-    for i in request_object.get_guild_channels(guild_id):
+    row_data = request_object.get_guild_channels(guild_id)
+    if type(row_data) == dict:
+        # If this is dict its possibility an error message about missing auth
+        print(Fore.RED + row_data['message'] + Fore.RESET)
+        return None
+
+    for i in row_data:
         try:
             if not i['last_message_id'] == None:
                 channels['text'].append({
@@ -104,6 +114,11 @@ def guild_channels(request_object: object, guild_id: str) -> dict:
 
 def specific_channel_messages(channel_id: str, request_object: object) -> None:
     channel_messages_row = request_object.get_channel_messages(channel_id) 
+
+    if type(channel_messages_row) == dict:
+        print(Fore.RED + channel_messages_row['message'] + Fore.RESET)
+        return None
+
     messages_list = list()
 
     def add_messages_to_list(message_list, row_data) -> list:
