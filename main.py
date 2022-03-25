@@ -1,5 +1,6 @@
 import os
 import traceback
+from tabulate import tabulate
 from pick import pick
 from dotenv import load_dotenv
 from colorama import Fore, init
@@ -64,7 +65,10 @@ def main():
                     case 6:
                         channels = guild_channels(req, input("Please enter a guild id: "))
 
-                        print(channels)
+                        for i in channels:
+                            print(f"{i} channels\n=====================")
+                            print(tabulate(channels[i], headers = 'keys') + "\n\n")
+                        
                             
                     case _:
                         pass
