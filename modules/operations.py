@@ -68,6 +68,40 @@ def user_guilds(request_object: object) -> None:
 
     return None
 
+
+def guild_channels(request_object: object, guild_id: str) -> dict:
+    """makes a get request to get guild channels and simplifies response data
+
+    Args:
+        request_object (object): request object
+        guild_id (str): Guild id as string 
+
+    Returns:
+        dict: contains all sound and text channels (id and name)
+    """
+    channels = {
+        'text': [],
+        'sound': []
+    }
+    
+    for i in request_object.get_guild_channels(guild_id):
+        try:
+            if not i['last_message_id'] == None:
+                channels['text'].append({
+                    'id': i['id'],
+                    'name': i['name'],
+                })
+            else:
+                channels["sound"].append({
+                    'id': i['id'],
+                    'name': i['name']
+                })
+        except KeyError:
+            continue
+
+    return channels
+
+
 def specific_channel_messages(channel_id: str, request_object: object) -> None:
     channel_messages_row = request_object.get_channel_messages(channel_id) 
     messages_list = list()

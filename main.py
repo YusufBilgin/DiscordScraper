@@ -1,4 +1,5 @@
 import os
+import traceback
 from pick import pick
 from dotenv import load_dotenv
 from colorama import Fore, init
@@ -10,6 +11,7 @@ from modules.get_requests import Requests
 from modules.operations import (
     user_guilds,
     user_friends,
+    guild_channels,
     user_dm_channels,
     user_account_data,
     specific_channel_messages
@@ -60,24 +62,7 @@ def main():
                         specific_channel_messages(channels[index], req)
 
                     case 6:
-                        channels = {
-                            'text': [],
-                            'sound': []
-                        }
-                        for i in req.get_guild_channels(input("Please enter a guild id: ")):
-                            try:
-                                if not i['last_message_id'] == None:
-                                    channels['text'].append({
-                                        'id': i['id'],
-                                        'name': i['name'],
-                                    })
-                                else:
-                                    channels["sound"].append({
-                                        'id': i['id'],
-                                        'name': i['name']
-                                    })
-                            except KeyError:
-                                continue
+                        channels = guild_channels(req, input("Please enter a guild id: "))
 
                         print(channels)
                             
@@ -98,5 +83,6 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print(Fore.GREEN + "\nExit the program")
     except Exception as error:
+        traceback.print_exc()
         print(Fore.RED + str(error))
         print("the program has been stopped" + Fore.RESET)
