@@ -83,7 +83,7 @@ def guild_channels(request_object: object, guild_id: str) -> dict:
         'text': [],
         'sound': []
     }
-    
+
     for i in request_object.get_guild_channels(guild_id):
         try:
             if not i['last_message_id'] == None:

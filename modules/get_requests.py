@@ -51,7 +51,16 @@ class Requests():
             f'https://discord.com/api/v9/guilds/{guild_id}/channels'
         )
 
-    def get_channel_messages(self, channel_id: str | int, before: bool = False, **kwargs) -> list:
+    def get_channel_messages(self, channel_id: str | int, before: bool = False, **kwargs) -> list | dict:
+        """a func that makes a get request to get channel messages
+
+        Args:
+            channel_id (str | int): text channel id
+            before (bool, optional): Defaults to False.
+
+        Returns:
+            list | dict: normally it returns a list but if request was not successfull a dict that contains error massage
+        """
         last_message_id = kwargs.get('id', None)
 
         if before == False:
