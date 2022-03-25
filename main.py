@@ -59,6 +59,28 @@ def main():
                         option, index = pick(options, title)
                         specific_channel_messages(channels[index], req)
 
+                    case 6:
+                        channels = {
+                            'text': [],
+                            'sound': []
+                        }
+                        for i in req.get_guild_channels(input("Please enter a guild id: ")):
+                            try:
+                                if not i['last_message_id'] == None:
+                                    channels['text'].append({
+                                        'id': i['id'],
+                                        'name': i['name'],
+                                    })
+                                else:
+                                    channels["sound"].append({
+                                        'id': i['id'],
+                                        'name': i['name']
+                                    })
+                            except KeyError:
+                                continue
+
+                        print(channels)
+                            
                     case _:
                         pass
 
