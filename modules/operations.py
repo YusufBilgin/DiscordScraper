@@ -23,18 +23,19 @@ def user_account_data(request_object: object) -> None:
 
 def user_friends(request_object: object) -> None:
     user_friends = request_object.get_friends()
-                
-    for i in user_friends:
-        table = [
-            ['ID', i['user']['id']],
-            ['Username', i['user']['username']],
-            ['Discriminator', i['user']['discriminator']],
-        ]
-        print(
-            tabulate(table)
-        )
+    table = list()
 
-    return None
+    for i in user_friends:
+        table.append({
+            'ID': i['user']['id'],
+            'Username': i['user']['username'],
+            'Discriminator': i['user']['discriminator']
+        })
+
+    output_table = tabulate(table)
+    print(output_table)
+
+    return output_table
 
 
 def user_dm_channels(request_object: object) -> None:
