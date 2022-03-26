@@ -21,6 +21,7 @@ def user_account_data(request_object: object) -> None:
     return data
 
 
+@save_to_txt
 def user_friends(request_object: object) -> None:
     user_friends = request_object.get_friends()
     table = list()
