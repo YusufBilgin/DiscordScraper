@@ -2,5 +2,6 @@
 /test.py
 /database.db
 /modules/__pycache__
+/modules/cli/__pycache__
 venv/
 output/

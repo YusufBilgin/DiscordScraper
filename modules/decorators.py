@@ -1,5 +1,5 @@
 import functools
-from .cli_forms import save_or_not
+from .cli.cli_forms import save_or_not
 from .file_operations import save_content_to_txt
 
 def template_decorator(func):

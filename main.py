@@ -5,9 +5,9 @@ from pick import pick
 from dotenv import load_dotenv
 from colorama import Fore, init
 
-from modules.menu import menu
+from modules.cli.menu import menu
 from modules.utils import wait
-from modules.cli_forms import choose_action
+from modules.cli.cli_forms import choose_action
 from modules.get_requests import Requests
 from modules.operations import (
     user_guilds,
