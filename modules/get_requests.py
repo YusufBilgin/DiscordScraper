@@ -40,11 +40,6 @@ class Requests():
             f'https://discord.com/api/v9/guilds/{guild_id}'
         )
     
-    def get_guild_members(self, guild_id: str | int) -> dict:
-        # (fix) endpoint is restricted
-        return self.request_func(
-            f'https://discord.com/api/v9/guilds/{guild_id}/members'
-        )
 
     def get_guild_channels(self, guild_id: str | int) -> list:
         return self.request_func(
