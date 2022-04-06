@@ -12,3 +12,6 @@ This is a simple python app that "collect" informations from discord.
 - Python3.9+ (I have tried to use some new features of python so therefore u will need a higher python version) 
 - Windows Terminal [this one](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701#activetab=pivot:overviewtab)
 - Your discord authorization token. (To make successful requests to the discord api. [Here]() u can learn how to learn your auth token)
+
+
+status: still in progress
